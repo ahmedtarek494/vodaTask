@@ -1,0 +1,18 @@
+package com.voda.iot.Services;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.voda.iot.DTOs.DeviceInfoDTO;
+
+@Service
+public class DevicesServiceImpl implements DevicesService {
+
+	@Override
+	public List<DeviceInfoDTO> getDevicesBySimStatus(String simStatus) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

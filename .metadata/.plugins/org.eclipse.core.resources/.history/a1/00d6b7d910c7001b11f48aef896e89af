@@ -1,0 +1,5 @@
+package com.voda.iot.DTOs;
+
+public class SimInfoDTO {
+
+}

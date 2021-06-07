@@ -1,0 +1,12 @@
+package com.voda.iot.Services;
+
+import java.util.List;
+
+import com.voda.iot.DTOs.DeviceInfoDTO;
+
+public interface DevicesService {
+	
+	public List<DeviceInfoDTO> getDevicesBySimStatus(String simStatus) ;
+ 
+
+}

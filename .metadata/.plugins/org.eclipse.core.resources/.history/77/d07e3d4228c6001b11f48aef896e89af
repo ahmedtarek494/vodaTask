@@ -1,0 +1,5 @@
+package com.voda.iot.entities;
+
+public class SIM {
+
+}

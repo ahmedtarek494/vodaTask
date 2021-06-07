@@ -1,0 +1,20 @@
+package com.voda.iot.Repos;
+
+import javax.persistence.EntityManager;
+
+import org.springframework.stereotype.Repository;
+
+import com.voda.iot.entities.Devices;
+
+@Repository
+public class DevicesRepoImpl extends BaseRepoImpl<Devices, Integer> implements DevicesRepo{
+
+	public DevicesRepoImpl(Class<Devices> domainClass, EntityManager em) {
+		super(domainClass, em);
+		// TODO Auto-generated constructor stub
+	}
+
+	
+
+	
+}

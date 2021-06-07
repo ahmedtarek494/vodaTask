@@ -1,0 +1,46 @@
+package com.voda.iot.Services;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.voda.iot.DTOs.DevicesResponse;
+import com.voda.iot.Repos.DevicesRepo;
+
+@Service
+public class DevicesServiceImpl implements DevicesService {
+
+	
+	
+	@Autowired
+	DevicesRepo devicesRepo;
+	
+	@Override
+	public DevicesResponse getDevicesBySimStatus(String simStatus,int limit,int page) {
+		// TODO Auto-generated method stub
+		DevicesResponse devices=new DevicesResponse();
+		try {
+		
+		devices.setTotalCount(devicesRepo.numberOfDevicesBysim(simStatus));
+		devices.setDevices(devicesRepo.devicesBySimStatus(simStatus,limit,page));
+		
+		
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return devices;
+	}
+
+	@Override
+	public void deleteById(int id) {
+		
+		try {
+			devicesRepo.deleteById(id);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+	}
+
+}

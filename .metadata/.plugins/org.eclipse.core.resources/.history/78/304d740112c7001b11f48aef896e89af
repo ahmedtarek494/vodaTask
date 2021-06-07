@@ -1,0 +1,37 @@
+package com.voda.iot.Repos;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+
+import org.springframework.stereotype.Repository;
+
+import com.voda.iot.DTOs.DeviceInfoDTO;
+import com.voda.iot.entities.Devices;
+
+@Repository
+public class DevicesRepoImpl extends BaseRepoImpl<Devices, Integer> implements DevicesRepo{
+
+	public DevicesRepoImpl(Class<Devices> domainClass, EntityManager em) {
+		super(domainClass, em);
+		// TODO Auto-generated constructor stub
+	}
+
+	public void deleteAllById(Iterable<? extends Integer> ids) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Devices> getDevicesBySimStatus(String simStatus) {
+		
+		return queryFactory.select(device).innerJoin(device.simId,sim).where(sim.status.equalsIgnoreCase(simStatus));
+	}
+
+	
+
+
+	
+
+	
+}

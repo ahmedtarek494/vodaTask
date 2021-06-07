@@ -1,0 +1,24 @@
+package com.voda.iot.DTOs;
+
+import com.voda.iot.entities.SIM;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class DeviceInfoDTO {
+
+	
+	private Integer id;
+	
+	private String Color;
+	
+	private String status;
+	
+	private Integer temp;
+}

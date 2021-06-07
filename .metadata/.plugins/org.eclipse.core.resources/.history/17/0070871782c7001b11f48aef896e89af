@@ -1,0 +1,25 @@
+package com.voda.iot.Services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.voda.iot.DTOs.DeviceInfoDTO;
+import com.voda.iot.Repos.DevicesRepo;
+
+@Service
+public class DevicesServiceImpl implements DevicesService {
+
+	
+	
+	@Autowired
+	DevicesRepo devicesRepo;
+	@Override
+	public List<DeviceInfoDTO> getDevicesBySimStatus(String simStatus) {
+		// TODO Auto-generated method stub
+		;
+		return devicesRepo.devicesBySimStatus(simStatus);
+	}
+
+}

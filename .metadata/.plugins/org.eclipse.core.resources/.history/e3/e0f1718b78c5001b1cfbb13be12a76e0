@@ -1,0 +1,16 @@
+jdbc.url=jdbc:sqlserver://localhost:1433;databaseName=master;rewriteBatchedStatements=true
+jdbc.username=sa
+jdbc.password=Sa_123456
+
+
+jdbc.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
+spring.jpa.hibernate.dialect=org.hibernate.dialect.SQLServer2012Dialect
+logging.level.org.hibernate.SQL=DEBUG
+logging.level.org.springframework.web=DEBUG
+
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+spring.jpa.properties.hibernate.proc.param_null_passing=true

@@ -1,0 +1,15 @@
+package com.voda.iot.DTOs;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class DeviceInfoEndpoints extends DeviceInfoDTO{
+
+	
+}

@@ -1,0 +1,12 @@
+package com.voda.iot.Repos;
+
+
+import com.voda.iot.entities.Devices;
+
+
+
+public interface DevicesRepo extends BaseRepo<Devices, Integer>{
+	
+	
+
+}

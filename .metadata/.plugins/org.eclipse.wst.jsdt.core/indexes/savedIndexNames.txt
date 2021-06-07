@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+G:\private\VodaTask\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3140816572.index
+2487797505.index
+1729106950.index
+50419766.index
+3978469225.index
+1370962892.index

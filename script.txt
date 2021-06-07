@@ -1,0 +1,80 @@
+
+create database iot
+
+go
+CREATE TABLE [dbo].[devices](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[color] [nchar](10) NULL,
+	[status] [nchar](10) NULL,
+	[temp] [int] NULL,
+ CONSTRAINT [PK_devices] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+CREATE TABLE [dbo].[SIM](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[operatorCode] [nchar](10) NULL,
+	[country] [nchar](10) NULL,
+	[status] [nchar](50) NULL,
+	[device_Id] [int] NULL,
+ CONSTRAINT [PK_SIM] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
+(
+	[device_Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[SIM]  WITH CHECK ADD FOREIGN KEY([device_Id])
+REFERENCES [dbo].[devices] ([id])
+GO
+
+
+declare @i as int
+set @i = 0
+
+begin transaction
+while(@i < 1000000)
+begin   
+    insert into devices (color,status,temp) values('white','READY',(SELECT FLOOR(RAND()*(85-(-25)+1))+(-25)))
+    set @i += 1
+end
+commit transaction
+
+go
+
+declare @y as int
+set @y = 0
+
+begin transaction
+while(@y < 1000000)
+begin   
+    insert into devices (color,status,temp) values('white',null,(SELECT FLOOR(RAND()*((-26)-(-35)+1))+(-35)))
+    set @y += 1
+end
+commit transaction
+
+
+go
+
+
+declare @x as int
+set @x = 1
+
+
+begin transaction
+while(@x <= 2000000)
+begin    
+    insert into sim (operatorCode,country,status,device_Id) values(concat('op',@x),'italy',(select CHOOSE( fLOOR(RAND()*(4-1+1))+1 ,'Active','Waiting for activation','Blocked','Deactivated')),@x)
+    set @x += 1
+end
+commit transaction
+
+

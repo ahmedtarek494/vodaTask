@@ -1,0 +1,8 @@
+package com.voda.iot.Services;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class DevicesServiceImpl implements DevicesService {
+
+}

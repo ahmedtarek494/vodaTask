@@ -1,0 +1,5 @@
+package com.voda.iot.exceptionConfig;
+
+public class IotRestExceptionHandler {
+
+}

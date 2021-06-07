@@ -1,0 +1,41 @@
+package com.voda.iot.Repos;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+
+import org.springframework.stereotype.Repository;
+
+import com.querydsl.core.types.Projections;
+import com.voda.iot.DTOs.DeviceInfoDTO;
+import com.voda.iot.DTOs.SimInfoDTO;
+import com.voda.iot.entities.Devices;
+
+@Repository
+public class DevicesRepoImpl extends BaseRepoImpl<Devices, Integer> implements DevicesRepo{
+
+	public DevicesRepoImpl( EntityManager em) {
+		super(Devices.class, em);
+		// TODO Auto-generated constructor stub
+	}
+
+	public void deleteAllById(Iterable<? extends Integer> ids) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<DeviceInfoDTO> devicesBySimStatus(String simStatus) {
+
+		return queryFactory.from(device).innerJoin(device.simId, sim).where(sim.status.equalsIgnoreCase(simStatus))
+				.select(Projections.constructor(DeviceInfoDTO.class, device.id, device.color, device.status,
+						device.temp,
+						Projections.constructor(SimInfoDTO.class, sim.id, sim.operatorCode, sim.country, sim.status))).limit(50).offset(0*50).fetch();
+	}
+	
+
+
+	
+
+	
+}

@@ -1,0 +1,9 @@
+package com.voda.iot.Services;
+ com.voda.iot.DTOs.DevicesResponse;
+
+public interface DevicesService {
+	
+	public DevicesResponse getDevicesBySimStatus(String simStatus) ;
+ 
+
+}

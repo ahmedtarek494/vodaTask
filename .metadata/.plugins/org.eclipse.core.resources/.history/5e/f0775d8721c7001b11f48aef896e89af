@@ -1,0 +1,28 @@
+package com.voda.iot.RestController;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.voda.iot.DTOs.DeviceInfoDTO;
+import com.voda.iot.Services.DevicesService;
+import com.voda.iot.utilities.SimStatusConstant;
+
+@RestController
+@RequestMapping("/devices")
+public class DevicesController {
+	
+	@Autowired
+	DevicesService deviceService;
+	
+	@GetMapping(path = "/getWaitingForActivationDevices", produces = "application/json")
+	public List<DeviceInfoDTO> getWaitingForActivationDevices(){
+		return deviceService.getDevicesBySimStatus(SimStatusConstant.WAITING_FOR_ACTIVATION);
+		
+	}
+
+}
